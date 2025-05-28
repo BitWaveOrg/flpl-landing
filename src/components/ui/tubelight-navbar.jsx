@@ -1,0 +1,93 @@
+"use client";
+
+import { cn } from "@/lib/utils"
+import { motion } from "framer-motion"
+import React, { useEffect, useState } from "react"
+
+import { Instagram } from "lucide-react";
+
+import Link from "next/link"
+import { BlurIn } from "@/components/ui/blur-in";
+
+export function NavBar({
+  items,
+  className,
+  activeTab,
+}) {
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+
+    handleResize()
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize);
+  }, [])
+
+  return (
+    <div
+      className={cn(
+        "fixed bottom-0 sm:top-0 left-1/2 -translate-x-1/2 z-50 mb-6 sm:pt-6 h-fit flex items-start justify-center w-full",
+        className
+      )}
+    >
+      <BlurIn
+        word="Florentin Pulisca"
+        className="font-bold text-white/80 h-12 text-2xl absolute left-0 ml-12"
+      />
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+        className="flex items-center gap-3 bg-background/5 border border-gray-400/40 backdrop-blur-lg py-1 px-1 rounded-full shadow-lg">
+        {items.map((item) => {
+          const Icon = item.icon
+          const isActive = `#${activeTab}` === item.url
+
+          return (
+            <Link
+              key={item.name}
+              href={item.url}
+              className={cn(
+                "relative cursor-pointer text-sm font-semibold px-6 py-2 rounded-full transition-colors",
+                "text-white/80 hover:text-white",
+                isActive && "bg-gray-400/20 text-white"
+              )}>
+              <span className="hidden md:inline">{item.name}</span>
+              <span className="md:hidden">
+                <Icon size={18} strokeWidth={2.5} />
+              </span>
+              {isActive && (
+                <motion.div
+                  layoutId="lamp"
+                  className="absolute inset-0 w-full bg-primary/5 rounded-full -z-10"
+                  initial={false}
+                  transition={{
+                    type: "spring",
+                    stiffness: 300,
+                    damping: 30,
+                  }}
+                >
+                  <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-8 h-1 bg-white rounded-t-full">
+                    <div className="absolute w-12 h-6 bg-primary/20 rounded-full blur-md -top-2 -left-2" />
+                    <div className="absolute w-8 h-6 bg-primary/20 rounded-full blur-md -top-1" />
+                    <div className="absolute w-4 h-4 bg-primary/20 rounded-full blur-sm top-0 left-2" />
+                  </div>
+                </motion.div>
+              )}
+            </Link>
+          );
+        })}
+      </motion.div>
+
+      <div className={'absolute right-0 mr-12 flex gap-2 h-12 items-center text-white/60 hover:text-white transition'}>
+        <Link href={'https://www.instagram.com/florentin_puliskaa/'}>
+          <Instagram />
+        </Link>
+      </div>
+    </div>
+  );
+}
