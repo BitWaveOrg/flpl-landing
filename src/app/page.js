@@ -45,7 +45,6 @@ const SMM_FEATURES = [
     description: "Îți creez și administrez profile atractive pe Facebook, Instagram și TikTok, cu design unic și descrieri optimizate SEO care reflectă brandul tău.",
     href: "/",
     cta: "Learn more",
-    background: <img className="absolute -right-20 -top-20 opacity-60" />,
     className: "lg:row-start-1 lg:row-end-4 lg:col-start-2 lg:col-end-3",
   },
   {
@@ -54,7 +53,6 @@ const SMM_FEATURES = [
     description: "Construiesc planuri de conținut pe baza audienței tale, pentru postări care atrag, implică și cresc vizibilitatea organică.",
     href: "/",
     cta: "Learn more",
-    background: <img className="absolute -right-20 -top-20 opacity-60" />,
     className: "lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-3",
   },
   {
@@ -63,7 +61,6 @@ const SMM_FEATURES = [
     description: "Programez postările în momente strategice și le optimizez continuu pentru performanță maximă și conversii reale.",
     href: "/",
     cta: "Learn more",
-    background: <img className="absolute -right-20 -top-20 opacity-60" />,
     className: "lg:col-start-1 lg:col-end-2 lg:row-start-3 lg:row-end-4",
   },
   {
@@ -72,7 +69,6 @@ const SMM_FEATURES = [
     description: "Creez Stories și Reels cu impact vizual și interactivitate, menite să atragă atenția și să genereze lead-uri.",
     href: "/",
     cta: "Learn more",
-    background: <img className="absolute -right-20 -top-20 opacity-60" />,
     className: "lg:col-start-3 lg:col-end-3 lg:row-start-1 lg:row-end-2",
   },
   {
@@ -82,7 +78,6 @@ const SMM_FEATURES = [
       "Primești rapoarte lunare și recomandări pentru creștere constantă, adaptate rezultatelor obținute.",
     href: "/",
     cta: "Learn more",
-    background: <img className="absolute -right-20 -top-20 opacity-60" />,
     className: "lg:col-start-3 lg:col-end-3 lg:row-start-2 lg:row-end-4",
   },
 ];
@@ -91,7 +86,7 @@ export default function LandingPage() {
   const [activeTab, setActiveTab] = useState()
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [email, setEmail] = useState("")
-  const isVerySmall = useMediaQuery("(max-width: 500px)")
+  // const isVerySmall = useMediaQuery("(max-width: 500px)")
 
   useEffect(() => {
     const sections = document.querySelectorAll('section');
@@ -201,7 +196,7 @@ export default function LandingPage() {
             </Badge>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Statistica mea</h2>
             <p className="max-w-[800px] text-muted-foreground md:text-lg">
-              GZeci de afaceri au crescut vizibilitatea, interacțiunea și vânzările prin strategii de social media bine
+              Zeci de afaceri au crescut vizibilitatea, interacțiunea și vânzările prin strategii de social media bine
               implementate. Cifrele confirmă eficiența.
             </p>
           </motion.div>
@@ -268,8 +263,8 @@ export default function LandingPage() {
               </Badge>
               <h2 className="text-3xl md:text-5xl font-bold mb-4">Ce clientii spun despre noi</h2>
               <p className="text-gray-400 max-w-2xl mx-auto">
-                Don't just take our word for it. Here's what our clients have to say about their experience with
-                TechNova.
+                Nu mă crede doar pe cuvânt. Iată ce au de spus clienții mei <br/>
+                despre experiența lor cu mine.
               </p>
             </motion.div>
           </div>
