@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils"
 import { motion } from "framer-motion"
-import React, { useEffect, useState } from "react"
+import React from "react"
 
 import { Instagram } from "lucide-react";
 
@@ -14,18 +14,6 @@ export function NavBar({
   className,
   activeTab,
 }) {
-  const [isMobile, setIsMobile] = useState(false)
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768)
-    }
-
-    handleResize()
-    window.addEventListener("resize", handleResize)
-    return () => window.removeEventListener("resize", handleResize);
-  }, [])
-
   return (
     <div
       className={cn(

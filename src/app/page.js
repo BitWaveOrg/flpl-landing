@@ -1,7 +1,6 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { useMediaQuery } from "@/hooks/use-media-query"
 
 import {
   Home,
@@ -33,9 +32,9 @@ const WORDS = ["Imaginea ta", "Promovarea ta", "Contentul tau"];
 
 const NAVBAR_ITEMS = [
   { name: 'Home', url: '#home', icon: Home },
+  { name: 'Servicii', url: '#features', icon: Briefcase },
   { name: 'Cifre', url: '#numbers', icon: User },
   { name: 'Recenzii', url: '#testimonials', icon: Briefcase },
-  { name: 'SMM', url: '#smm', icon: Briefcase },
 ];
 
 const SMM_FEATURES = [
@@ -86,7 +85,6 @@ export default function LandingPage() {
   const [activeTab, setActiveTab] = useState()
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [email, setEmail] = useState("")
-  // const isVerySmall = useMediaQuery("(max-width: 500px)")
 
   useEffect(() => {
     const sections = document.querySelectorAll('section');
@@ -117,7 +115,7 @@ export default function LandingPage() {
       <NavBar items={NAVBAR_ITEMS} activeTab={activeTab} />
 
       {/* Hero Section */}
-      <section id={'home'} className="relative pt-32 pb-20 overflow-hidden">
+      <section id={'home'} className="relative pt-24 sm:pt-32 pb-20 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-b from-purple-900/20 to-black" />
           <div className="absolute top-0 left-0 right-0 h-[500px] bg-gradient-to-b from-purple-900/10 to-transparent" />
@@ -130,7 +128,7 @@ export default function LandingPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-4xl sm:text-5xl md:text-7xl font-bold bg-gradient-to-r from-white via-purple-200 to-blue-200 bg-clip-text text-transparent leading-tight"
+              className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-white via-purple-200 to-blue-200 bg-clip-text text-transparent leading-tight"
             >
               Construim
             </motion.h1>
@@ -138,7 +136,7 @@ export default function LandingPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-4xl sm:text-5xl md:text-7xl font-bold bg-gradient-to-r from-white via-purple-200 to-blue-200 bg-clip-text text-transparent leading-tight"
+              className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-white via-purple-200 to-blue-200 bg-clip-text text-transparent leading-tight"
             >
               <FlipWords className={'text-blue-400'} words={WORDS} />
             </motion.h1>
@@ -147,7 +145,7 @@ export default function LandingPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-purple-200 to-blue-200 bg-clip-text text-transparent leading-tight"
+              className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-purple-200 to-blue-200 bg-clip-text text-transparent leading-tight"
             >
               În Online
             </motion.h1>
@@ -176,6 +174,39 @@ export default function LandingPage() {
               </div>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section id={'features'} className={'relative'}>
+        <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(120,50,255,0.15),transparent_50%)]" />
+
+        <div className={'container mx-auto px-4 relative z-10'}>
+          <div className="text-center mb-16">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <Badge className="rounded-full mb-4 px-4 py-1.5 text-sm font-medium" variant="secondary">
+                Servicii
+              </Badge>
+              <h2 className="text-3xl md:text-5xl font-bold mb-4">Promovare, Atragerea Audienței</h2>
+              <p className="text-gray-400 max-w-2xl mx-auto">
+                Prin strategii smart de Social Media Management, îți cresc vizibilitatea,
+                interacțiunea și încrederea în brand.
+              </p>
+            </motion.div>
+          </div>
+
+          <div className={'flex w-full justify-center'}>
+            <BentoGrid className="lg:grid-rows-3 px-8 md:px-12 lg:px-24 max-w-[1300px]">
+              {SMM_FEATURES.map((feature) => (
+                <BentoCard key={feature.name} {...feature} />
+              ))}
+            </BentoGrid>
+          </div>
         </div>
       </section>
 
@@ -297,49 +328,18 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* SMM Section */}
-      <section id={'smm'} className={'relative'}>
-        <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(120,50,255,0.15),transparent_50%)]" />
-
-        <div className="text-center mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <Badge className="rounded-full mb-4 px-4 py-1.5 text-sm font-medium" variant="secondary">
-              SMM
-            </Badge>
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">Promovare, Atragerea Audienței</h2>
-            <p className="text-gray-400 max-w-2xl mx-auto">
-              Prin strategii smart de Social Media Management, îți cresc vizibilitatea, <br/>
-              interacțiunea și încrederea în brand.
-            </p>
-          </motion.div>
-        </div>
-
-        <div className={'flex w-full justify-center'}>
-          <BentoGrid className="lg:grid-rows-3 px-8 md:px-12 lg:px-24 max-w-[1300px]">
-            {SMM_FEATURES.map((feature) => (
-              <BentoCard key={feature.name} {...feature} />
-            ))}
-          </BentoGrid>
-        </div>
-      </section>
-
       {/* Footer */}
       <footer className="mt-16 p-8 border-t border-gray-800/50 flex flex-col md:flex-row justify-between items-center gap-4">
-        <p className="text-gray-400 text-sm">&copy; {new Date().getFullYear()} Florentin Pulisca. Toate drepturile sunt rezervate.</p>
+        <div>
+          <p className="text-gray-400 text-sm">&copy; {new Date().getFullYear()} Florentin Pulisca. Toate drepturile sunt rezervate.</p>
+          <p className="text-gray-400 text-sm">Website creat de Bitwave Software S.R.L.</p>
+        </div>
         <div className="flex gap-6">
           <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">
             Privacy Policy
           </a>
           <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">
             Terms of Service
-          </a>
-          <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">
-            Cookies
           </a>
         </div>
       </footer>
