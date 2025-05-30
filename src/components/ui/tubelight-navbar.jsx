@@ -4,10 +4,8 @@ import { cn } from "@/lib/utils"
 import { motion } from "framer-motion"
 import React from "react"
 
-import { Instagram } from "lucide-react";
-
 import Link from "next/link"
-import { BlurIn } from "@/components/ui/blur-in";
+import {GradientHeading} from "@/components/ui/gradient-heading";
 
 export function NavBar({
   items,
@@ -21,10 +19,16 @@ export function NavBar({
         className
       )}
     >
-      <BlurIn
-        word="Florentin Pulisca"
-        className="font-bold text-white/80 h-12 text-2xl absolute left-0 ml-12"
-      />
+      <div className={'invisible xl:visible absolute left-0 ml-12 pt-2 flex items-center h-1/2'}>
+        <GradientHeading
+          variant="light"
+          size='sm'
+          weight="bold"
+          className={'pb-0'}
+        >
+          Florentin Pulisca
+        </GradientHeading>
+      </div>
 
       <motion.div
         initial={{ opacity: 0 }}
@@ -40,7 +44,7 @@ export function NavBar({
               key={item.name}
               href={item.url}
               className={cn(
-                "relative cursor-pointer text-sm font-semibold px-6 py-2 rounded-full transition-colors",
+                "relative cursor-pointer text-sm font-semibold px-4 py-4 sm:px-6 sm:py-2 rounded-full transition-colors",
                 "text-white/80 hover:text-white",
                 isActive && "bg-gray-400/20 text-white"
               )}>
@@ -70,12 +74,6 @@ export function NavBar({
           );
         })}
       </motion.div>
-
-      <div className={'absolute right-0 mr-12 flex gap-2 h-12 items-center text-white/60 hover:text-white transition'}>
-        <Link href={'https://www.instagram.com/florentin_puliskaa/'}>
-          <Instagram />
-        </Link>
-      </div>
     </div>
   );
 }
