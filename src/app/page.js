@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 
 import {
   Home,
-  User,
+  ChartPie,
   Briefcase,
   Instagram,
   Palette,
@@ -13,7 +13,8 @@ import {
   Phone,
   ArrowRight,
   Mail,
-  ChartNoAxesCombined
+  ChartNoAxesCombined,
+  User
 } from "lucide-react"
 
 import {
@@ -33,15 +34,15 @@ import ShowcaseReel from "@/components/showcase-reel";
 import {Card, CardContent} from "@/components/ui/card";
 import {GlowEffect} from "@/components/ui/glow-effect";
 
-const WORDS = ["Imaginea", "Promovarea", "Contentul"];
+const WORDS = ["imaginea", "promovarea", "contentul"];
 
 const NAVBAR_ITEMS = [
   { name: 'Home', url: '#home', icon: Home },
   { name: 'Servicii', url: '#features', icon: Briefcase },
   { name: 'Showcase', url: '#showcase', icon: Images },
-  { name: 'Cifre', url: '#numbers', icon: User },
-  { name: 'Recenzii', url: '#testimonials', icon: Briefcase },
-  { name: 'Contact', url: '#contact-me', icon: Briefcase },
+  { name: 'Cifre', url: '#numbers', icon: ChartPie },
+  { name: 'Recenzii', url: '#testimonials', icon: User },
+  { name: 'Contact', url: '#contact-me', icon: Phone },
 ];
 
 const FEATURES = [
@@ -216,10 +217,17 @@ export default function LandingPage() {
               Construim
             </motion.h1>
 
-            <FlipWords
-              words={WORDS}
-              className={'h-[55px] md:h-[80px] text-center xl:text-left bg-gradient-to-r from-blue-500 to-blue-400 bg-clip-text text-transparent text-5xl md:text-7xl font-bold'}
-            />
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <FlipWords
+                words={WORDS}
+                className={'h-[55px] md:h-[80px] text-center text-blue-500 xl:text-left text-5xl md:text-7xl px-0 font-bold'}
+              />
+            </motion.div>
+
 
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
@@ -227,7 +235,7 @@ export default function LandingPage() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-white via-purple-200 to-blue-200 bg-clip-text text-transparent leading-tight"
             >
-              Afacerii tale
+              afacerii tale
             </motion.h1>
 
             <motion.p
